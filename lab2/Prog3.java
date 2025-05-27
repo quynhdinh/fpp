@@ -1,4 +1,3 @@
-package lab2;
 public class Prog3 {
     public static void main(String[] args) {
        float a = 1.27f;
