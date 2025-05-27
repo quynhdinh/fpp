@@ -1,4 +1,4 @@
-public class Prog8 {
+public class Prog2_8 {
     static int min(int[] arrayOfInts) {
         int minNum = arrayOfInts[0];
         for (int i = 1; i < arrayOfInts.length; i++) {
