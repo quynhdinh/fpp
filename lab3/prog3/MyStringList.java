@@ -1,7 +1,5 @@
 package prog3;
 
-import java.util.Arrays;
-
 public class MyStringList {
     private final int INITIAL_LENGTH = 2;
     private String[] strArray;
@@ -14,7 +12,6 @@ public class MyStringList {
 
     public void add(String s) {
         if (size == strArray.length) {
-            System.out.println(size + " " + strArray.length);
             resize();
         }
         strArray[size++] = s;
@@ -25,39 +22,53 @@ public class MyStringList {
     }
 
     public boolean find(String s) {
-        for (String string : strArray) {
-            if (string.equals(s)) {
+        for (String string : strArray)
+            if (string.equals(s))
                 return true;
-            }
-        }
         return false;
     }
 
     public void insert(String s, int pos) {
         if (strArray.length == size)
             resize();
+        for (int i = size; i >= pos + 1; i--) {
+            strArray[i] = strArray[i - 1];
+        }
+        strArray[pos] = s;
+        size++;
     }
 
     public boolean remove(String s) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
             if (s.equals(strArray[i])) {
                 for (int j = i + 1; j < size; j++)
                     strArray[j - 1] = strArray[j];
                 size--;
+                strArray[size] = null;
                 return true;
             }
-        }
         return false;
     }
 
 
     private void resize() {
         System.out.println("Resizing...");
-        strArray = Arrays.copyOf(strArray, size * 2);
+        String[] new_array = new String[size * 2];
+        for (int i = 0; i < size; i++)
+            new_array[i] = strArray[i];
+        // if (size >= 0) System.arraycopy(strArray, 0, new_array, 0, size);
+        strArray = new_array;
     }
 
     public String toString() {
-        return Arrays.toString(this.strArray);
+        StringBuilder res = new StringBuilder();
+        res.append("[");
+        for (int i = 0; i < size; i++) {
+            res.append(strArray[i]);
+            if (i != size - 1) res.append(", ");
+        }
+        res.append("]");
+        return res.toString();
     }
 
     public int size() {
