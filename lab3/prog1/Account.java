@@ -1,5 +1,7 @@
 package prog1;
 
+import employeeinfo.AccountType;
+
 class Account {
     private final static double DEFAULT_BALANCE = 0.0;
     private double balance;

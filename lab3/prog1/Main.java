@@ -1,5 +1,7 @@
 package prog1;
 
+import employeeinfo.AccountType;
+
 public class Main {
     public static void main(String[] args) {
         Employee employee = new Employee("Leonardo", "Leo", 100.0, 2025, 12, 29);

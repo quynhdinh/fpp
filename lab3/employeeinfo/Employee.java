@@ -46,9 +46,9 @@ public class Employee {
     public String getFormattedAcctInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append("ACCOUNT INFO FOR ").append(name).append(":\n\n");
-        if (checkingAcct != null) sb.append(checkingAcct.toString()).append("\n");
-        if (savingsAcct != null) sb.append(savingsAcct.toString()).append("\n");
-        if (retirementAcct != null) sb.append(retirementAcct.toString()).append("\n");
+        if (checkingAcct != null) sb.append(checkingAcct.toString());
+        if (savingsAcct != null) sb.append(savingsAcct.toString());
+        if (retirementAcct != null) sb.append(retirementAcct.toString());
         return sb.toString();
     }
 
