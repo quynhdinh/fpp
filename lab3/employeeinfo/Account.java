@@ -1,4 +1,4 @@
-package prog2;
+package employeeinfo;
 
 public class Account {
     private AccountType acctType;

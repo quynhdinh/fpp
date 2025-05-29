@@ -1,4 +1,4 @@
-package prog2;
+package employeeinfo;
 
 import java.time.LocalDate;
 

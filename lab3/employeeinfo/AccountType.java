@@ -1,4 +1,4 @@
-package prog2;
+package employeeinfo;
 
 public enum AccountType {
     CHECKING, SAVINGS, RETIREMENT
