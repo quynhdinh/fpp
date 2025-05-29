@@ -9,13 +9,19 @@ public final class Rectangle {
         this.height = height;
     }
 
-    public double getWidth() { return width;}
+    public double getWidth() {
+        return width;
+    }
 
-    public double getHeight() { return height; }
+    public double getHeight() {
+        return height;
+    }
 
     public String toString() {
         return "Rectangle [width=" + width + ", height=" + height + "]";
     }
 
-    public double computeArea() { return width * height; }
+    public double computeArea() {
+        return width * height;
+    }
 }

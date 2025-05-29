@@ -8,7 +8,7 @@ public class Main {
 
         System.out.println("Area of a rectangle is " + myRec.computeArea());
         System.out.println("Area of a triangle is " + myTri.computeArea());
-        System.out.printf("Area of a circle is %.2f",  myCirc.computeArea());
+        System.out.printf("Area of a circle is %.2f", myCirc.computeArea());
 
     }
 }

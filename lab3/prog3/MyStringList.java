@@ -31,9 +31,8 @@ public class MyStringList {
     public void insert(String s, int pos) {
         if (strArray.length == size)
             resize();
-        for (int i = size; i >= pos + 1; i--) {
+        for (int i = size; i >= pos + 1; i--)
             strArray[i] = strArray[i - 1];
-        }
         strArray[pos] = s;
         size++;
     }
@@ -54,9 +53,7 @@ public class MyStringList {
     private void resize() {
         System.out.println("Resizing...");
         String[] new_array = new String[size * 2];
-        for (int i = 0; i < size; i++)
-            new_array[i] = strArray[i];
-        // if (size >= 0) System.arraycopy(strArray, 0, new_array, 0, size);
+        if (size >= 0) System.arraycopy(strArray, 0, new_array, 0, size);
         strArray = new_array;
     }
 
@@ -91,5 +88,4 @@ public class MyStringList {
         l.insert("Tonya", 0);
         System.out.println("The list of size " + l.size() + " after inserting Tonya into pos 0 is " + l);
     }
-
 }

@@ -8,12 +8,15 @@ public final class Circle {
         this.radius = radius;
     }
 
-    public double getRadius() { return radius;}
-
-    public String toString() {
-        return "Circle(" + radius +  ")";
+    public double getRadius() {
+        return radius;
     }
 
+    public String toString() {
+        return "Circle(" + radius + ")";
+    }
 
-    public double computeArea() { return PI * radius * radius; }
+    public double computeArea() {
+        return PI * radius * radius;
+    }
 }

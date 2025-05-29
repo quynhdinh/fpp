@@ -9,13 +9,19 @@ public final class Triangle {
         this.height = height;
     }
 
-    public double getWidth() { return base;}
+    public double getWidth() {
+        return base;
+    }
 
-    public double getHeight() { return height; }
+    public double getHeight() {
+        return height;
+    }
 
     public String toString() {
         return "Triangle(" + base + ", " + height + ")";
     }
 
-    public double computeArea() { return 0.5 * base * height; }
+    public double computeArea() {
+        return 0.5 * base * height;
+    }
 }
