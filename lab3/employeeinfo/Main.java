@@ -1,4 +1,4 @@
-import prog2.*;
+package prog2;
 
 import java.util.Scanner;
 
