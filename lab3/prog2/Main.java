@@ -1,4 +1,6 @@
-package employeeinfo;
+package prog2;
+
+import employeeinfo.Employee;
 
 import java.util.Scanner;
 
