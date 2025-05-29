@@ -39,7 +39,7 @@ public class Employee {
         return salary;
     }
 
-    // needs to be improved
+    // improved
     public Date getHireDay() {
         return new Date(this.hireDay.getTime());
     }

@@ -29,6 +29,14 @@ public class Account {
         return balance;
     }
 
+    public void setAcctType(AccountType acctType) {
+        this.acctType = acctType;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "Account type: " + acctType.toString().toLowerCase() + "\n" +

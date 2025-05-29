@@ -8,7 +8,7 @@ class Account {
     private Enum<AccountType> acctType;
     private Employee employee;
 
-    Account(Employee emp, Enum acctType, double balance) {
+    Account(Employee emp, Enum<AccountType> acctType, double balance) {
         employee = emp;
         this.acctType = acctType;
         this.balance = balance;

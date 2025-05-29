@@ -22,8 +22,8 @@ public class MyStringList {
     }
 
     public boolean find(String s) {
-        for (String string : strArray)
-            if (string.equals(s))
+        for (int i = 0; i < size; i++)
+            if (strArray[i].equals(s))
                 return true;
         return false;
     }
@@ -75,17 +75,18 @@ public class MyStringList {
     public static void main(String[] args) {
         MyStringList l = new MyStringList();
         l.add("Bob");
+        System.out.println("The list of size " + l.size() + " is " + l);
         l.add("Steve");
+        System.out.println("The list of size " + l.size() + " is " + l);
         l.add("Susan");
+        System.out.println("The list of size " + l.size() + " is " + l);
         l.add("Mark");
+        System.out.println("The list of size " + l.size() + " is " + l);
         l.add("Dave");
         System.out.println("The list of size " + l.size() + " is " + l);
         l.remove("Mark");
+        System.out.println("The list of size " + l.size() + " is " + l);
         l.remove("Bob");
         System.out.println("The list of size " + l.size() + " is " + l);
-        l.insert("Richard", 3);
-        System.out.println("The list of size " + l.size() + " after inserting Richard into pos 3 is " + l);
-        l.insert("Tonya", 0);
-        System.out.println("The list of size " + l.size() + " after inserting Tonya into pos 0 is " + l);
     }
 }
