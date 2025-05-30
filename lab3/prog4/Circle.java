@@ -12,7 +12,7 @@ public final class Circle {
     }
 
     public String toString() {
-        return "Circle(" + radius + ")";
+        return "Circle (radius =" + radius + ")";
     }
 
     public double computeArea() {

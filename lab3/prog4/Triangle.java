@@ -18,7 +18,7 @@ public final class Triangle {
     }
 
     public String toString() {
-        return "Triangle(" + base + ", " + height + ")";
+        return "Triangle (base =" + base + ", height=" + height + ")";
     }
 
     public double computeArea() {

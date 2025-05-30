@@ -18,7 +18,7 @@ public final class Rectangle {
     }
 
     public String toString() {
-        return "Rectangle [width=" + width + ", height=" + height + "]";
+        return "Rectangle (width=" + width + ", height=" + height + ")";
     }
 
     public double computeArea() {
