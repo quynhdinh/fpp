@@ -21,9 +21,9 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()) return false;
-        Person other = (Person) obj;
-        return name.equals(other.name) && dateOfBirth.equals(other.dateOfBirth);
+        if (obj == null || this.getClass() != obj.getClass())
+            return false;
+        Person person = (Person) obj;
+        return name.equals(person.name) && dateOfBirth.equals(person.dateOfBirth);
     }
 }
-

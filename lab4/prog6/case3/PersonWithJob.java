@@ -1,7 +1,6 @@
 package lab4.prog6.case3;
 
 import java.util.GregorianCalendar;
-import java.util.Objects;
 
 public class PersonWithJob {
     private Person person;
@@ -22,13 +21,9 @@ public class PersonWithJob {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()) return false;
-        PersonWithJob other = (PersonWithJob) obj;
-        return person.equals(other.person) && salary == other.salary;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(person, salary);
+        if (obj == null || this.getClass() != obj.getClass())
+            return false;
+        PersonWithJob personWithJob = (PersonWithJob) obj;
+        return person.equals(personWithJob.person) && Math.abs(this.salary - personWithJob.salary) < 0.0001;
     }
 }
