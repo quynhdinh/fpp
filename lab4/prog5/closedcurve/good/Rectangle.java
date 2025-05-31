@@ -1,6 +1,6 @@
 package prog5.closedcurve.good;
 
-public final class Rectangle extends ClosedCurve implements Polygon{
+public final class Rectangle extends ClosedCurve implements Polygon {
     private final double width;
     private final double height;
 
@@ -15,6 +15,6 @@ public final class Rectangle extends ClosedCurve implements Polygon{
 
     @Override
     public double[] getArrayOfSides() {
-        return new double[] {width, width, height, height};
+        return new double[]{width, width, height, height};
     }
 }

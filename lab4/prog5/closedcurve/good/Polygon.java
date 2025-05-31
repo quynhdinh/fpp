@@ -5,7 +5,7 @@ public interface Polygon {
 
     static double sum(double[] arr) {
         double res = 0;
-        for(double d : arr) {
+        for (double d : arr) {
             res += d;
         }
         return res;

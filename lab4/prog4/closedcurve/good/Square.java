@@ -1,21 +1,23 @@
 package prog4.closedcurve.good;
 
 public final class Square extends ClosedCurve implements Polygon {
-	private final double side;
-	
-	public Square(double side){
-		this.side = side;
-	}
+    private final double side;
 
-	public double computeArea() {
-		return side * side;
-	}
+    public Square(double side) {
+        this.side = side;
+    }
 
-	public int getNumberOfSides() {
-		return 4;
-	}
+    public double computeArea() {
+        return side * side;
+    }
 
-	public double computePerimeter() {
-		return side * 4;
-	}
+    @Override
+    public int getNumberOfSides() {
+        return 4;
+    }
+
+    @Override
+    public double computePerimeter() {
+        return side * 4;
+    }
 }
