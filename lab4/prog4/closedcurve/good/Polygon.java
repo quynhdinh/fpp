@@ -1,7 +1,7 @@
 package prog4.closedcurve.good;
 
 public interface Polygon {
-    public int getNumberOfSides();
+    int getNumberOfSides();
 
-    public double computePerimeter();
+    double computePerimeter();
 }

@@ -7,6 +7,7 @@ public final class Square extends ClosedCurve implements Polygon {
         this.side = side;
     }
 
+    @Override
     public double computeArea() {
         return side * side;
     }

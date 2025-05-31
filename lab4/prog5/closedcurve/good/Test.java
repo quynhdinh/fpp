@@ -3,7 +3,6 @@ package prog5.closedcurve.good;
 public class Test {
 
     public static void main(String[] args) {
-
         ClosedCurve[] objects = {
                 new Rectangle(3, 4),
                 new Triangle(4, 5, 6),
@@ -15,7 +14,5 @@ public class Test {
             Polygon p = (Polygon) cc;
             System.out.println("\tPerimeter = " + p.computePerimeter());
         }
-
     }
-
 }

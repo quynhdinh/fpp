@@ -1,9 +1,9 @@
 package prog5.closedcurve.good;
 
 public interface Polygon {
-    public double[] getArrayOfSides();
+    double[] getArrayOfSides();
 
-    static double sum(double[] arr) {
+    static double perimeter(double[] arr) {
         double res = 0;
         for (double d : arr) {
             res += d;
@@ -12,6 +12,6 @@ public interface Polygon {
     }
 
     default double computePerimeter() {
-        return Polygon.sum(getArrayOfSides());
+        return perimeter(getArrayOfSides());
     }
 }
