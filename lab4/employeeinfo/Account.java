@@ -8,17 +8,20 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public abstract void makeDeposit(double amount);
+    public void makeDeposit(double amount) {
+        double current = this.getBalance();
+        this.setBalance(current + amount);
+    }
 
     public abstract boolean makeWithdrawal(double amount);
 
-    public double getBalance(){
+    public double getBalance() {
         return balance;
     }
 
     public abstract AccountType getAccountType();
 
-    public void setBalance(double balance){
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

@@ -87,6 +87,6 @@ public class Employee {
     }
 
     public LocalDate getHireDate() {
-        return hireDate;
+        return LocalDate.of(hireDate.getYear(), hireDate.getMonth(), hireDate.getDayOfMonth());
     }
 }
