@@ -1,11 +1,11 @@
 package prog1;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Secretary extends DeptEmployee {
     private int overtimeHours;
 
-    public Secretary(String name, int salary, Date date, int overtimeHours) {
+    public Secretary(String name, int salary, LocalDate date, int overtimeHours) {
         super(name, salary, date);
         this.overtimeHours = overtimeHours;
     }

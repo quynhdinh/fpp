@@ -1,16 +1,16 @@
 package prog1;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class DeptEmployee {
+public abstract class DeptEmployee {
     private String name;
     protected int salary;
-    private Date hireDate;
+    private LocalDate hireDate;
 
-    protected DeptEmployee(String name, int salary, Date hireDate) {
+    protected DeptEmployee(String name, int salary, LocalDate hireDate) {
         this.name = name;
         this.salary = salary;
-        this.hireDate = new Date(hireDate.getTime());
+        this.hireDate = hireDate;
     }
 
     public String getName() {
@@ -21,15 +21,20 @@ public class DeptEmployee {
         this.name = name;
     }
 
-    public Date getHireDate() {
-        return new Date(hireDate.getTime());
+    public LocalDate getHireDate() {
+        return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 
-    public int computeSalary(){
+    public int computeSalary() {
         return salary;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
