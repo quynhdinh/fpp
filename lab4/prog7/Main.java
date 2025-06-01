@@ -1,10 +1,12 @@
-package lab4.prog7;
+package prog7;
+
+import prog7.employeeinfo.Employee;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
-    Employee[] emps = null;
+
+    Employee[] emps;
 
     public static void main(String[] args) {
         new Main();
@@ -25,15 +27,10 @@ public class Main {
         emps[2].createNewSavings(12600);
         emps[2].createNewRetirement(9000);
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("See a report of sorted employees by largest account balance? (y/n) ");
-        String answer = sc.next();
+        //using Comparable implementation on Employee
+        //to sort emps
+        Arrays.sort(emps);
+        System.out.println(Arrays.toString(emps));
 
-        if (answer.equalsIgnoreCase("y")) {
-            Arrays.sort(emps);
-            System.out.println(Arrays.toString(emps));
-        } else {
-            System.out.println("Okay. Exiting the application.");
-        }
     }
 }
