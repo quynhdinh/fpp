@@ -2,21 +2,12 @@ package prog3;
 
 import employeeinfo.Account;
 import employeeinfo.AccountType;
+import employeeinfo.Employee;
 
 public class CheckingAccount extends Account {
 
-    public CheckingAccount(double balance) {
-        super(balance);
-        this.accountType = AccountType.CHECKING;
-    }
-    @Override
-    public boolean makeWithdrawal(double amount) {
-        double current = this.getBalance();
-        if (amount <= current) {
-            this.setBalance(current - amount);
-            return true;
-        }
-        return false;
+    public CheckingAccount(Employee e, double balance) {
+        super(e, balance);
     }
 
     @Override

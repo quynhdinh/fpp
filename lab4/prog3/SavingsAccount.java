@@ -2,17 +2,12 @@ package prog3;
 
 import employeeinfo.Account;
 import employeeinfo.AccountType;
+import employeeinfo.Employee;
 
 public class SavingsAccount extends Account {
 
-    public SavingsAccount(double balance) {
-        super(balance);
-        this.accountType = AccountType.SAVINGS;
-    }
-
-    @Override
-    public boolean makeWithdrawal(double amount) {
-        return false;
+    public SavingsAccount(Employee e, double balance) {
+        super(e, balance);
     }
 
     @Override

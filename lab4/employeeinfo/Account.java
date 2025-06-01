@@ -1,11 +1,17 @@
 package employeeinfo;
 
 public abstract class Account {
+    private final Employee emp;
     private double balance;
-    protected AccountType accountType;
 
-    public Account(double balance) {
+    public Account(Employee e, double balance) {
+        this.emp = e;
         this.balance = balance;
+    }
+
+    public Account(Employee e){
+        this.emp = e;
+        balance = 0;
     }
 
     public void makeDeposit(double amount) {
@@ -13,7 +19,12 @@ public abstract class Account {
         this.setBalance(current + amount);
     }
 
-    public abstract boolean makeWithdrawal(double amount);
+    public boolean makeWithdrawal(double amount) {
+        if (amount > balance)
+            return false;
+        balance -= amount;
+        return true;
+    }
 
     public double getBalance() {
         return balance;
@@ -27,6 +38,6 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return "Current balance:  " + balance + " type = " + accountType.type;
+        return "Current balance:  " + balance + ", type = " + getAccountType();
     }
 }

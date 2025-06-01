@@ -2,29 +2,28 @@ package prog3;
 
 import employeeinfo.Account;
 import employeeinfo.AccountType;
+import employeeinfo.Employee;
 
 public class RetirementAccount extends Account {
+    private final double PENALTY_PERCENT = 2.0;
 
-    public RetirementAccount(double balance) {
-        super(balance);
-        this.accountType = AccountType.RETIREMENT;
+    public RetirementAccount(Employee e, double balance) {
+        super(e, balance);
     }
 
     @Override
     public boolean makeWithdrawal(double amount) {
-        double need = amount * 1.02;
-        double have = super.getBalance();
-        if (have >= need) {
-            super.setBalance(have - need);
-            return true;
+        double bal = getBalance();
+
+        double penalty = bal * (PENALTY_PERCENT / 100);
+        bal = bal - amount - penalty;
+        if (bal < 0) {
+            return false;
         }
-        return false;
+        setBalance(bal);
+        return true;
     }
 
-    @Override
-    public double getBalance() {
-        return 0;
-    }
 
     @Override
     public AccountType getAccountType() {

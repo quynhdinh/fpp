@@ -1,12 +1,12 @@
 package employeeinfo;
 
 public enum AccountType {
-    CHECKING("checking"),
-    SAVINGS("savings"),
-    RETIREMENT("retirement");
-    public final String type;
+    CHECKING(0),
+    SAVINGS(1),
+    RETIREMENT(2);
+    public final int type;
 
-    AccountType(String type) {
+    AccountType(int type) {
         this.type = type;
     }
 }
