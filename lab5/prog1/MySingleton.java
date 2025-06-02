@@ -1,17 +1,17 @@
 package lab5.prog1;
 
-public class MysSngleton {
-    private static MysSngleton singletonInstance;
+public class MySingleton {
+    private static MySingleton singletonInstance;
 
     // private constructor to restrict external creation of object
-    private MysSngleton() {
+    private MySingleton() {
 
     }
 
     // provide public access to singleton object
-    public static MysSngleton getSingletonInstance() {
+    public static MySingleton getSingletonInstance() {
         if (singletonInstance == null) {
-            singletonInstance = new MysSngleton();
+            singletonInstance = new MySingleton();
         }
         return singletonInstance;
     }
