@@ -1,6 +1,5 @@
-package prog2;
-
-public class Prog2 {
+package prog4;
+class Reverse {
     public static void main(String[] args) {
 
     }

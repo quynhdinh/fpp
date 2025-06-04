@@ -1,4 +1,4 @@
-package prog4;
+package prog1;
 
 public final class Exponential {
     public double power(double x, double n) {

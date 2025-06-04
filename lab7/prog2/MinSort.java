@@ -1,5 +1,6 @@
-package prog1;
-class Prog1 {
+package prog2;
+
+public class MinSort {
     public static void main(String[] args) {
 
     }

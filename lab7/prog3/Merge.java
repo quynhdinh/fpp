@@ -1,6 +1,6 @@
 package prog3;
 
-public class Prog3 {
+public class Merge {
     public static void main(String[] args) {
 
     }
