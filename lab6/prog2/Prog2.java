@@ -2,7 +2,6 @@ package prog2;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 
 class Prog2 extends JFrame {
 
@@ -11,7 +10,9 @@ class Prog2 extends JFrame {
     JButton countButton, reverseButton, removeButton;
 
     public Prog2() {
-        initializeWindow();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("String Utility");
+        setResizable(false);
         textBoxInput = new JTextField(10);
         textBoxOutput = new JTextField(10);
         inputLabel = new JLabel("Input");
@@ -44,29 +45,22 @@ class Prog2 extends JFrame {
         leftPanel.add(removeButton);
 
         JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new GridLayout(2, 1, 10, 10)); // 2 rows, 2 columns, 10px gaps
+        rightPanel.setLayout(new GridLayout(2, 1, 10, 10));
 
-        // Create labels and text boxes
         JPanel upperRight = new JPanel();
         upperRight.setLayout(new GridLayout(2, 1, 10, 1));
-        inputLabel = new JLabel("Input");
-        textBoxInput = new JTextField(10);
         upperRight.add(inputLabel);
-        upperRight.add(textBoxOutput);
-
+        upperRight.add(textBoxInput);
 
         JPanel lowerRight = new JPanel();
         lowerRight.setLayout(new GridLayout(2, 1, 10, 1));
-        outputLabel = new JLabel("Output");
-        textBoxOutput = new JTextField(10);
         lowerRight.add(outputLabel);
         lowerRight.add(textBoxOutput);
 
-        // Add labels and text boxes to the panel
+        // Add labels and text boxes to the right panel
         rightPanel.add(upperRight);
         rightPanel.add(lowerRight);
 
-        // Set frame visibility
         JPanel masterPanel = new JPanel();
         masterPanel.setLayout(new BorderLayout());
         masterPanel.add(leftPanel, BorderLayout.WEST);
@@ -74,12 +68,6 @@ class Prog2 extends JFrame {
         getContentPane().add(masterPanel);
         setSize(320, 240);
         centerFrameOnDesktop(this);
-    }
-
-    public void initializeWindow() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("String Utility");
-        setResizable(false);
     }
 
     public static void centerFrameOnDesktop(Component f) {
@@ -91,14 +79,10 @@ class Prog2 extends JFrame {
         f.setLocation(((width - frameWidth) / 2), (height - frameHeight) / 3);
     }
 
-
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             Prog2 mf = new Prog2();
             mf.setVisible(true);
         });
     }
-
-    @Serial
-    private static final long serialVersionUID = -5565229515686514125L;
 }
