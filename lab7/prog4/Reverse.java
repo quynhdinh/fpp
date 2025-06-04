@@ -4,15 +4,16 @@ import java.util.Arrays;
 
 class Reverse {
     public static void main(String[] args) {
-        int[] a = new int[]{1, 2, 3, 4};
-        int[] b = new int[4];
-        reverse(b, a, 0, a.length - 1);
-        System.out.println(Arrays.toString(b));
+        int[] a = new int[]{1, 3, 5, 7, 9, 13};
+        reverse(a, 0, a.length - 1);
+        System.out.println(Arrays.toString(a));
     }
 
-    public static void reverse(int[] res, int[] a, int i, int j) {
-        if (i >= a.length || j < 0) return;
-        res[i] = a[j];
-        reverse(res, a, i + 1, j - 1);
+    static void reverse(int[] a, int i, int j) {
+        if (i > j) return;
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+        reverse(a, i + 1, j - 1);
     }
 }
