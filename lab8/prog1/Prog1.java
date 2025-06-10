@@ -22,11 +22,9 @@ public class Prog1 {
     }
 
     void swap(int i, int j) {
-
         String temp = strArray[i];
         strArray[i] = strArray[j];
         strArray[j] = temp;
-
     }
 
     // find minimum of arr between the indices bottom and top
