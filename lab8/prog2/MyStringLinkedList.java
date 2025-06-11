@@ -1,4 +1,4 @@
-package prog2;
+package lab8.prog2;
 
 public class MyStringLinkedList {
 	Node header;

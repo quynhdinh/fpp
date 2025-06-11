@@ -1,3 +1,5 @@
+package lab8.prog5;
+
 public class MyTable {
 	private Entry[] entries;
 

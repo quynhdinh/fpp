@@ -1,4 +1,4 @@
-package prog1;
+package lab8.prog1;
 
 public class Prog1 {
 
