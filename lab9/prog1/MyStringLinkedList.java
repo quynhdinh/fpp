@@ -17,7 +17,7 @@ public class MyStringLinkedList {
 	}
 
 	private Node getNode(int pos) {
-		if (pos >= size())
+		if (pos < 0 || pos >= size())
 			throw new IndexOutOfBoundsException();
 		Node next = header;
 		for (int i = 0; i <= pos; ++i) {
@@ -51,8 +51,7 @@ public class MyStringLinkedList {
 	}
 
 	public void insert(String s, int pos) {
-		// corrected to throw exception
-		if (pos > size()) {
+		if (pos > size() || pos < 0) {
 			throw new IndexOutOfBoundsException("pos = " + pos + " but size = " + size());
 		}
 		Node next = header;
