@@ -1,5 +1,7 @@
 package employeebst;
 
+import java.util.Comparator;
+
 import bst.EmployeeBST;
 
 public class EmployeeDriver {
@@ -9,7 +11,7 @@ public class EmployeeDriver {
 	}
 
 	public EmployeeDriver() {
-		NameComparator nameComp = new NameComparator();
+		Comparator<Employee> nameComp = new NameComparator();
 		EmployeeBST bst = new EmployeeBST(nameComp);
 		bst.insert(new Employee("George", 40000, 1996, 11, 5));
 		bst.insert(new Employee("Dave", 50000, 2000, 1, 3));

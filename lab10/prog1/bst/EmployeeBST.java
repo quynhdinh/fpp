@@ -19,9 +19,9 @@ public class EmployeeBST {
             this.right = right;
         }
 
-        private Employee element; // The data in the node
-        private EmployeeNode left; // Left child
-        private EmployeeNode right; // Right child
+        private Employee element;
+        private EmployeeNode left;
+        private EmployeeNode right;
     }
 
     public EmployeeBST(Comparator<Employee> nameComp) {
@@ -30,22 +30,22 @@ public class EmployeeBST {
 
     public void insert(Employee x) {
         if (root == null) {
-            root = new EmployeeNode(x, null, null);
+            root = new EmployeeNode(x);
         } else {
             EmployeeNode n = root;
             boolean inserted = false;
             while (!inserted) {
-                int compareResult = comparator.compare(this.root.element, n.element);
+                int compareResult = comparator.compare(x, n.element);
                 if (compareResult < 0) {
                     // space found on the left
                     if (n.left == null) {
-                        n.left = new EmployeeNode(x, null, null);
+                        n.left = new EmployeeNode(x);
                         inserted = true;
                     } else n = n.left;
                 } else if (compareResult >= 0) {
                     // space found on the right
                     if (n.right == null) {
-                        n.right = new EmployeeNode(x, null, null);
+                        n.right = new EmployeeNode(x);
                         inserted = true;
                     } else n = n.right;
                 }
