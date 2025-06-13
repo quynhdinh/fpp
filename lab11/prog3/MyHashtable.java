@@ -53,6 +53,9 @@ public class MyHashtable implements Iterable {
 	public void put(Object key, Object value) {
 		if (key == null)
 			return;
+		if (loadFactor() >= 5) {
+			rehash();
+		}
 		int hashcode = key.hashCode();
 		int hash = hash(hashcode);
 		// if key has already been used, update value in the Entry
@@ -200,6 +203,24 @@ public class MyHashtable implements Iterable {
 
 	private int loadFactor() {
 		return numEntries / tableSize;
+	}
+
+	private void rehash() {
+		LinkedList[] tempTable = new LinkedList[table.length * 2];
+		tableSize = tempTable.length;
+		for (int i = 0; i < table.length; i++) {
+			Iterator it = table[i].iterator();
+			while (it.hasNext()) {
+				Entry entry = (Entry) it.next();
+				int hash = hash(entry.key.hashCode());
+
+				if (tempTable[hash] == null) {
+					tempTable[hash] = new LinkedList();
+				}
+				tempTable[hash].add(entry);
+			}
+		}
+		table = tempTable;
 	}
 
 	private class Entry {
