@@ -8,7 +8,6 @@ public class Schur {
         if (list == null || list.size() < 2) {
             return false;
         }
-
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
             Integer x = list.get(i);
@@ -24,10 +23,8 @@ public class Schur {
     public static void main(String[] args) {
         Schur schur = new Schur();
         List<Integer> list = List.of(9, 8, 20, 8, 2, 5);
-        Integer z = 7;
-
+        int z = 7;
         boolean result = schur.checkForSum(list, z);
-        System.out.printf("Does the list (%s)contain two numbers that sum to " + z + "? " + result, list);
-
+        System.out.printf("Does the list %s contain two numbers that sum up to " + z + "? \n" + result, list);
     }
 }

@@ -1,43 +1,40 @@
 package lab11.prog1;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Employee {
     private String firstName;
     private String lastName;
-    private HashMap<String, Double> salaryRecord;
+    private Map<String, Double> salaryRecord;
 
     public Employee() {
         salaryRecord = new HashMap<>();
     }
 
     public void addEntry(String date, double salary) {
-        // implement
         salaryRecord.put(date, salary);
     }
 
     public void printPaymentAmount(String date) {
-        // implement
-        Double payment = salaryRecord.get(date);
-        if (payment != null) {
-            System.out.println(firstName + " " + lastName + "was paid " + payment + " on " + date);
+        if (salaryRecord.containsKey(date)) {
+            System.out.printf("%s %s was paid %s on %s\n", firstName, lastName, salaryRecord.get(date), date);
         } else {
-            System.out.println(firstName + " " + lastName + "did not receive on " + date);
+            System.out.printf("%s %s did not receive a paycheck on %s\n", firstName, lastName, date);
         }
     }
 
     public void printAveragePaycheck() {
-        // implement
         double sum = 0;
         if (salaryRecord.isEmpty()) {
             System.out.println("No paycheck found");
+            return;
         }
         for (double amount : salaryRecord.values()) {
             sum += amount;
         }
-
         double result = sum / salaryRecord.size();
-        System.out.println("Average paycheck for " + firstName + " " + lastName + "was " + result);
+        System.out.printf("Average paycheck for %s %s was %s\n", firstName, lastName, result);
     }
 
     public static void main(String[] args) {
