@@ -53,7 +53,7 @@ public class MyHashtable implements Iterable {
 	public void put(Object key, Object value) {
 		if (key == null)
 			return;
-		if (loadFactor() >= 5) {
+		if (loadFactor() >= maxLoadFactor) {
 			rehash();
 		}
 		int hashcode = key.hashCode();
@@ -213,7 +213,6 @@ public class MyHashtable implements Iterable {
 			while (it.hasNext()) {
 				Entry entry = (Entry) it.next();
 				int hash = hash(entry.key.hashCode());
-
 				if (tempTable[hash] == null) {
 					tempTable[hash] = new LinkedList();
 				}
