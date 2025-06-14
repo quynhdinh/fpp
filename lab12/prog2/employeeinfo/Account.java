@@ -23,9 +23,10 @@ abstract public class Account {
 
 	void makeWithdrawal(double amount) throws OverdrawnAccountException {
 		double totalAmount = amount;
+		double PENALTY_PERCENT = 0.02;
 
 		if (getAcctType() == AccountType.RETIREMENT) {
-			totalAmount += 0.02 * balance;
+			totalAmount += PENALTY_PERCENT * balance;
 		}
 		if (totalAmount > balance) {
 			String msg = getAcctType() == AccountType.RETIREMENT
