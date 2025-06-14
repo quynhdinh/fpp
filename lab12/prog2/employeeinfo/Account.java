@@ -1,5 +1,7 @@
 package lab12.prog2.employeeinfo;
 
+import lab12.prog2.OverdrawnAccountException;
+
 abstract public class Account {
 	private Employee emp;
 	private double balance;
@@ -18,12 +20,20 @@ abstract public class Account {
 	void makeDeposit(double amount){
 		balance += amount;
 	}
-	boolean makeWithdrawal(double amount){
-		if(amount > balance){
-			return false;
+
+	void makeWithdrawal(double amount) throws OverdrawnAccountException {
+		double totalAmount = amount;
+
+		if (getAcctType() == AccountType.RETIREMENT) {
+			totalAmount += 0.02 * balance;
 		}
-		balance -= amount;
-		return true;
+		if (totalAmount > balance) {
+			String msg = getAcctType() == AccountType.RETIREMENT
+					? "After computing penalties, your withdrawal amount exceeds your balance."
+					: "Withdrawal amount exceeds balance";
+			throw new OverdrawnAccountException(msg);
+		}
+		balance -= totalAmount;
 	}
 	double getBalance(){
 		return balance;

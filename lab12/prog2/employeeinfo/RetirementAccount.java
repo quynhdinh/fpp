@@ -11,18 +11,6 @@ public class RetirementAccount extends Account {
 		super(e);
 	}
 
-	public boolean makeWithdrawal(double amount) {
-		double bal = getBalance();
-
-		double penalty = bal * (PENALTY_PERCENT / 100);
-		bal = bal - amount - penalty;
-		if (bal < 0) {
-			return false;
-		}
-		setBalance(bal);
-		return true;
-	}
-
 	public AccountType getAcctType() {
 		return AccountType.RETIREMENT;
 	}
