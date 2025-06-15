@@ -26,7 +26,6 @@ public class Employee {
 			names.add(accounts.get(i).getAcctType().toString().toLowerCase());
 		}
 		return names;
-		
 	}
 	
 	public void createNewSavings(double startBalance){
@@ -37,7 +36,6 @@ public class Employee {
 	}
 	public void createNewRetirement(double startBalance){
 		accounts.add(new RetirementAccount(this,startBalance));
-
 	}
 	public void deposit(int acctIndex, double amt){
 		Account selected = accounts.get(acctIndex);

@@ -25,9 +25,7 @@ public class Main {
 		emps[2].createNewChecking(10038);
 		emps[2].createNewSavings(12600);
 		emps[2].createNewRetirement(9000);
-		
-				
-		
+
 		String n = System.getProperty("line.separator");
 		String choices ="  A. See a report of all accounts."+n+
 						"  B. Make a deposit."+n+
@@ -81,8 +79,6 @@ public class Main {
 		System.out.println();
 		System.out.println("$"+amount+
 				" has been deposited in the "+n+name+" account of "+ emps[empChoice].getName());
-		
-		
 	}
 	void handleWithdrawals() {
 		String n = System.getProperty("line.separator");
@@ -120,11 +116,8 @@ public class Main {
 		} catch (OverdrawnAccountException er) {
 			System.out.println(er.getMessage());
 		}
-		
-		
-	}	
+	}
 	
-
 	String getAllAccounts(){
 		String retVal = "";
 		String n = System.getProperty("line.separator");

@@ -9,8 +9,6 @@ abstract public class Account {
 	Account(Employee e, double startBalance) {
 		emp = e;
 		balance = startBalance;
-		
-		
 	}
 	Account(Employee e) {
 		this(e,0.0);
@@ -22,19 +20,9 @@ abstract public class Account {
 	}
 
 	void makeWithdrawal(double amount) throws OverdrawnAccountException {
-		double totalAmount = amount;
-		double PENALTY_PERCENT = 0.02;
-
-		if (getAcctType() == AccountType.RETIREMENT) {
-			totalAmount += PENALTY_PERCENT * balance;
-		}
-		if (totalAmount > balance) {
-			String msg = getAcctType() == AccountType.RETIREMENT
-					? "After computing penalties, your withdrawal amount exceeds your balance."
-					: "Withdrawal amount exceeds balance";
-			throw new OverdrawnAccountException(msg);
-		}
-		balance -= totalAmount;
+        if (amount > balance)
+			throw new OverdrawnAccountException("Withdrawal amount exceeds balance");
+		balance -= amount;
 	}
 	double getBalance(){
 		return balance;
