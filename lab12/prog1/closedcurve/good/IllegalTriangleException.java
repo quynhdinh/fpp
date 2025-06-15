@@ -4,5 +4,4 @@ public class IllegalTriangleException extends IllegalClosedCurveException {
     public IllegalTriangleException(String msg) {
         super(msg);
     }
-
 }

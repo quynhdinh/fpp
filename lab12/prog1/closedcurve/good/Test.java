@@ -5,13 +5,9 @@ public class Test {
     public static void main(String[] args) {
         ClosedCurve[] objects = new ClosedCurve[7];
         String currentShape = "";
-
         try {
-			try{ 
-            currentShape = "Triangle";
             objects[0] = new Triangle(4, 5, 6);
 
-            currentShape = "Triangle";
             objects[1] = new Triangle(1, 2, 10);
 
             currentShape = "Square";
@@ -28,13 +24,9 @@ public class Test {
 
             currentShape = "Rectangle";
             objects[6] = new Rectangle(4, 7);
-			}
-
-        catch (IllegalTriangleException e) {
-            System.out.println("An " + e.getClass().getSimpleName() + " was thrown in a " + currentShape + " instance.");
-        } 
-	  }
-		catch (IllegalClosedCurveException e) {
+        } catch (IllegalTriangleException e) {
+            System.out.println("An " + e.getClass().getSimpleName() + " was thrown in a Triangle instance.");
+        } catch (IllegalClosedCurveException e) {
             System.out.println("An " + e.getClass().getSimpleName() + " was thrown in a " + currentShape + " instance.");
         }
 

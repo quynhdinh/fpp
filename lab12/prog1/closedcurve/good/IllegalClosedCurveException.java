@@ -4,5 +4,4 @@ public class IllegalClosedCurveException extends Exception {
     public IllegalClosedCurveException(String msg) {
         super(msg);
     }
-
 }
