@@ -1,45 +1,43 @@
 package lab12.prog1.closedcurve.good;
 
 public class Test {
-	
+
 	public static void main(String[] args) {
+		ClosedCurve[] objects = new ClosedCurve[7];
+		String currentShape = "";
 
-		ClosedCurve[] objects = {new Triangle(4,5,6),
-								 new Square(3),
-								 new Rectangle(3,7),
-								 new Circle(3)};
-		//compute areas
-		for(ClosedCurve cc : objects) {
-			String nameOfCurve = getClassNameNoPackage(cc.getClass());
+		try {
+			currentShape = "Triangle";
+			objects[0] = new Triangle(4, 5, 6);
 
-			System.out.println("The area of this "+
-								nameOfCurve+ 
-								" is "+
-								cc.computeArea());
-							
+			// currentShape = "Triangle";
+			// objects[1] = new Triangle(1, 2, 10);
+
+			currentShape = "Square";
+			objects[2] = new Square(3);
+
+			currentShape = "Square";
+			objects[3] = new Square(-1);
+
+			currentShape = "Circle";
+			objects[4] = new Circle(3);
+
+			currentShape = "Circle";
+			objects[5] = new Circle(-3);
+
+			currentShape = "Rectangle";
+			objects[6] = new Rectangle(4, 7);
+
+		} catch (IllegalClosedCurveException e) {
+			System.out.println("An " + e.getClass().getSimpleName() +
+					" was thrown in a " + currentShape + " instance.");
+		}
+
+		System.out.println("\n--- Area Calculations ---");
+		for (ClosedCurve obj : objects) {
+			if (obj != null) {
+				System.out.println("Area of " + obj.getClass().getSimpleName() + " is " + obj.computeArea());
 			}
-		
+		}
 	}
-	public static String getClassNameNoPackage(Class aClass){ 
-        String fullClassName = aClass.getName();
-        int index = fullClassName.lastIndexOf('.');
-        String className = null;
-        String packageName = null;
-        
-        
-        //in this case, there is no package name
-        if(index==-1) {
-            return fullClassName;
-        }
-        else {
-				  //for other apps, may be useful to have this
-            packageName = fullClassName.substring(0,index);
-
-            className = fullClassName.substring(index+1);
-            return className;
-        }    
-	    	
-
-	}
-
 }

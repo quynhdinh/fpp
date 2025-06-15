@@ -1,15 +1,17 @@
 package lab12.prog1.closedcurve.good;
 
-public class Square extends ClosedCurve {
-	double side;
-	public Square(Double side){
-		this(side.doubleValue());
-	}
-	public Square(double side) {
+public final class Square extends ClosedCurve {
+	private final double side;
+
+	public Square(double side) throws IllegalClosedCurveException {
+		if (side <= 0) {
+			throw new IllegalClosedCurveException("Side must be positive");
+		}
 		this.side = side;
 	}
-	double computeArea() {
-		return(side*side);
-	}
 
+	@Override
+	public double computeArea() {
+		return side * side;
+	}
 }
