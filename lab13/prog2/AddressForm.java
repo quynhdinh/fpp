@@ -2,16 +2,15 @@ package lab13.prog2;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 public class AddressForm extends JFrame {
     private JPanel topPanel;
     private JPanel middlePanel;
     private JPanel bottomPanel;
-    private JTextField tfName,
+    private JTextField tfID,
             tfLastName,
             tfSSN,
             tfFirstName,
@@ -19,12 +18,13 @@ public class AddressForm extends JFrame {
             tfCity,
             tfState,
             tfZIP;
+    private JLabel tfInfo;
 
     private JPanel idPanel,
             lastNamePanel,
             ssnPanel,
             firstNamePanel,
-            stateStreet,
+            streetPanel,
             cityPanel,
             statePanel,
             twoPanel;
@@ -47,7 +47,6 @@ public class AddressForm extends JFrame {
         getContentPane().add(wrapper);
         pack();
         centerFrameOnDesktop(this);
-
     }
 
     private void createTopPanel() {
@@ -63,7 +62,6 @@ public class AddressForm extends JFrame {
         topPanel.add(firstNamePanel, BorderLayout.EAST);
         topPanel.add(lastNamePanel, BorderLayout.CENTER);
         topPanel.add(ssnPanel, BorderLayout.EAST);
-
     }
 
     private void createMiddlePanel() {
@@ -73,7 +71,7 @@ public class AddressForm extends JFrame {
         createCityPanel();
         createStatePanel();
         createZipPanel();
-        middlePanel.add(stateStreet, BorderLayout.WEST);
+        middlePanel.add(streetPanel, BorderLayout.WEST);
         middlePanel.add(cityPanel, BorderLayout.EAST);
         middlePanel.add(statePanel, BorderLayout.EAST);
         middlePanel.add(twoPanel, BorderLayout.EAST);
@@ -82,32 +80,37 @@ public class AddressForm extends JFrame {
     private void createBottomPanel() {
         bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JButton btnSubmit = new JButton("Submit");
-        btnSubmit.setFont(makeSmallFont(btnSubmit.getFont()));
+        JButton btnSearch = new JButton("Search");
+        btnSearch.setFont(makeSmallFont(btnSearch.getFont()));
         JButton btnSave = new JButton("Save");
-        btnSave.setFont(makeSmallFont(btnSubmit.getFont()));
+        btnSave.setFont(makeSmallFont(btnSearch.getFont()));
         JButton btnClear = new JButton("Clear");
-        btnClear.setFont(makeSmallFont(btnSubmit.getFont()));
-        btnSubmit.addActionListener(e -> {
-
-            String name = tfName.getText();
-            String street = tfLastName.getText();
-            String city = tfSSN.getText();
-            String state = tfStreet.getText();
-            String zip = tfCity.getText();
-
-            if (!zip.matches("\\d+")) {
-                JOptionPane.showMessageDialog(AddressForm.this, "Zip code must be numeric!", "Invalid Input",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
+        btnClear.setFont(makeSmallFont(btnSearch.getFont()));
+        btnSearch.addActionListener(e -> {
+            ReadPerson readPerson = new ReadPerson();
+            ReadAddress readAddress = new ReadAddress();
+            System.out.println("searching for " + idPanel);
+            try {
+                Person person = readPerson.getPerson(Integer.parseInt(tfID.getText()));
+                Address address = readAddress.getAddress(Integer.parseInt(tfID.getText()));
+                if (person != null && address != null) {
+                    tfInfo.setText("Record found!");
+                    tfFirstName.setText(person.getFirstName());
+                    tfLastName.setText(person.getLastName());
+                    tfSSN.setText(person.getSsn());
+                    tfState.setText(address.getState());
+                    tfCity.setText(address.getCity());
+                    tfZIP.setText(address.getZip());
+                    tfStreet.setText(address.getStreet());
+                } else {
+                    tfInfo.setText("No records found");
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
-
-            System.out.println(name);
-            System.out.println(street);
-            System.out.println(city + ", " + state + " " + zip);
         });
         btnClear.addActionListener(e -> {
-            tfName.setText("");
+            tfID.setText("");
             tfLastName.setText("");
             tfSSN.setText("");
             tfFirstName.setText("");
@@ -116,28 +119,33 @@ public class AddressForm extends JFrame {
             tfState.setText("");
             tfZIP.setText("");
         });
-        bottomPanel.add(btnSubmit);
+        bottomPanel.add(btnSearch);
         bottomPanel.add(btnSave);
         bottomPanel.add(btnClear);
+
+        tfInfo = new JLabel();
+        tfInfo.setFont(makeSmallFont(tfInfo.getFont()));
+        tfInfo.setText("....");
+        bottomPanel.add(tfInfo);
     }
 
     private void createIDPanel() {
-        JPanel lblNamePanel = new JPanel();
-        lblNamePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        JLabel lblName = new JLabel("Name:");
-        lblName.setFont(makeSmallFont(lblName.getFont()));
-        lblNamePanel.add(lblName);
+        JPanel lblIDPanel = new JPanel();
+        lblIDPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        JLabel lblID = new JLabel("ID:");
+        lblID.setFont(makeSmallFont(lblID.getFont()));
+        lblIDPanel.add(lblID);
 
-        JPanel tfNamePanel = new JPanel();
-        tfNamePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        tfName = new JTextField(10);
-        tfName.setFont(makeSmallFont(tfName.getFont()));
-        tfNamePanel.add(tfName);
+        JPanel tfIDPanel = new JPanel();
+        tfIDPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        tfID = new JTextField(10);
+        tfID.setFont(makeSmallFont(tfID.getFont()));
+        tfIDPanel.add(tfID);
 
         idPanel = new JPanel();
         idPanel.setLayout(new BorderLayout());
-        idPanel.add(lblNamePanel, BorderLayout.NORTH);
-        idPanel.add(tfNamePanel, BorderLayout.CENTER);
+        idPanel.add(lblIDPanel, BorderLayout.NORTH);
+        idPanel.add(tfIDPanel, BorderLayout.CENTER);
     }
 
     private void createLastNamePanel() {
@@ -210,10 +218,10 @@ public class AddressForm extends JFrame {
         tfStreet.setFont(makeSmallFont(tfStreet.getFont()));
         tfStreetPanel.add(tfStreet);
 
-        stateStreet = new JPanel();
-        stateStreet.setLayout(new BorderLayout());
-        stateStreet.add(lblStreetPanel, BorderLayout.NORTH);
-        stateStreet.add(tfStreetPanel, BorderLayout.CENTER);
+        streetPanel = new JPanel();
+        streetPanel.setLayout(new BorderLayout());
+        streetPanel.add(lblStreetPanel, BorderLayout.NORTH);
+        streetPanel.add(tfStreetPanel, BorderLayout.CENTER);
     }
 
     private void createCityPanel() {
@@ -282,7 +290,6 @@ public class AddressForm extends JFrame {
         setTitle("Address Form");
 
         handleWindowClosing();
-        // setSize(320,250);
         setResizable(false);
     }
 
@@ -290,7 +297,6 @@ public class AddressForm extends JFrame {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent w) {
                 dispose();
-                // other clean-up
                 System.exit(0);
             }
         });
@@ -307,11 +313,9 @@ public class AddressForm extends JFrame {
     }
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AddressForm frame = new AddressForm();
-                frame.setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            AddressForm frame = new AddressForm();
+            frame.setVisible(true);
         });
     }
 }
