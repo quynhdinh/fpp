@@ -49,7 +49,7 @@ public class Prog1 extends JFrame {
         topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         createNamePanel();
-        createeStreetPanel();
+        createStreetPanel();
         createCityPanel();
 
         topPanel.add(namePanel, BorderLayout.WEST);
@@ -115,7 +115,7 @@ public class Prog1 extends JFrame {
         namePanel.add(tfNamePanel, BorderLayout.CENTER);
     }
 
-    private void createeStreetPanel() {
+    private void createStreetPanel() {
         JPanel lblStreetPanel = new JPanel();
         lblStreetPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
         JLabel lblStreet = new JLabel("Street:");
@@ -208,7 +208,6 @@ public class Prog1 extends JFrame {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent w) {
                 dispose();
-                // other clean-up
                 System.exit(0);
             }
         });
