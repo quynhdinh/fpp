@@ -86,24 +86,50 @@ public class AddressForm extends JFrame {
         btnSave.setFont(makeSmallFont(btnSearch.getFont()));
         JButton btnClear = new JButton("Clear");
         btnClear.setFont(makeSmallFont(btnSearch.getFont()));
+        ReadPerson readPerson = new ReadPerson();
+        ReadAddress readAddress = new ReadAddress();
         btnSearch.addActionListener(e -> {
-            ReadPerson readPerson = new ReadPerson();
-            ReadAddress readAddress = new ReadAddress();
-            System.out.println("searching for " + idPanel);
+            if (tfID.getText().isEmpty()) {
+                tfInfo.setText("ID field must not be empty!");
+                return;
+            }
             try {
-                Person person = readPerson.getPerson(Integer.parseInt(tfID.getText()));
-                Address address = readAddress.getAddress(Integer.parseInt(tfID.getText()));
+                Person person = readPerson.getPerson(Long.parseLong(tfID.getText()));
+                Address address = readAddress.getAddress(Long.parseLong(tfID.getText()));
                 if (person != null && address != null) {
                     tfInfo.setText("Record found!");
-                    tfFirstName.setText(person.getFirstName());
-                    tfLastName.setText(person.getLastName());
-                    tfSSN.setText(person.getSsn());
-                    tfState.setText(address.getState());
-                    tfCity.setText(address.getCity());
-                    tfZIP.setText(address.getZip());
-                    tfStreet.setText(address.getStreet());
+                    tfFirstName.setText(person.firstName());
+                    tfLastName.setText(person.lastName());
+                    tfSSN.setText(person.ssn());
+                    tfState.setText(address.state());
+                    tfCity.setText(address.city());
+                    tfZIP.setText(address.zip());
+                    tfStreet.setText(address.street());
                 } else {
                     tfInfo.setText("No records found");
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            } catch (NumberFormatException ex){
+                tfInfo.setText("ID wrong format");
+            }
+        });
+        btnSave.addActionListener(e -> {
+            if (!tfID.getText().isEmpty() || tfFirstName.getText().isEmpty() || tfLastName.getText().isEmpty() || tfSSN.getText().isEmpty()
+                    || tfStreet.getText().isEmpty() || tfCity.getText().isEmpty() || tfState.getText().isEmpty() || tfZIP.getText().isEmpty()) {
+                tfInfo.setText("To perform a Save, all fields but ID must be nonempty");
+                return;
+            }
+            try {
+                long i = 0;
+                i = readPerson.savePerson(new Person("dummy", tfFirstName.getText(), tfLastName.getText(), tfSSN.getText()));
+                if (i > 0) {
+                    int i1 = readAddress.saveAddress(new Address(i, tfStreet.getText(), tfCity.getText(), tfState.getText(), tfZIP.getText()));
+                    if (i1 < 0) {
+                        tfInfo.setText("Error occurred");
+                    } else tfInfo.setText("Save successfully id " + i);
+                } else {
+                    tfInfo.setText("Error occurred");
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
