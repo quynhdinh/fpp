@@ -46,7 +46,6 @@ public class ReadAddress {
         String sql = "INSERT INTO address (id, street, city, state, zip) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = ConnectManager.getConnection()) {
             PreparedStatement stat = conn.prepareStatement(sql);
-            // Set parameters
             stat.setLong(1, dummy.id());
             stat.setString(2, dummy.street());
             stat.setString(3, dummy.city());
