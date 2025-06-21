@@ -19,14 +19,16 @@ public class MyBST {
 	public void printTree() {
 		if (root == null)
 			System.out.println("Empty tree");
-		else
+		else {
 			printTree(root);
+			System.out.println();
+		}
 	}
 
 	private void printTree(Node t) {
 		if (t != null) {
 			printTree(t.left);
-			System.out.println(t.element);
+			System.out.printf("%d ", t.element);
 			printTree(t.right);
 		}
 	}
@@ -65,9 +67,7 @@ public class MyBST {
 					} else {
 						n = n.left;
 					}
-				}
-
-				else if (x.compareTo(n.element) >= 0) {
+				} else if (x.compareTo(n.element) >= 0) {
 					// space found on the right
 					if (n.right == null) {
 						n.right = new Node(x, null, null);
@@ -82,21 +82,52 @@ public class MyBST {
 		}
 	}
 
+	public void preOrder() {
+		preOrder(root);
+	}
+
+	private void preOrder(Node t) {
+		if (t != null) {
+			System.out.println(t.element);
+			preOrder(t.left);
+			preOrder(t.right);
+		}
+	}
+
+	public void postOrder() {
+		preOrder(root);
+	}
+
+	private void postOrder(Node t) {
+		if (t != null) {
+			postOrder(t.left);
+			postOrder(t.right);
+			System.out.println(t.element);
+		}
+	}
+
+	public Integer getRoot() {
+		return root == null ? null : root.element;
+	}
+
+	public boolean isEmpty() {
+		return root == null;
+	}
+
 	public static void main(String[] args) {
 		MyBST bst = new MyBST();
 		for (int i = 15; i >= 0; --i) {
-			bst.insert(new Integer(2 * i));
-			bst.insert(new Integer(2 * i - 5));
+			bst.insert(2 * i);
+			bst.insert(2 * i - 5);
 		}
 		bst.printTree();
-		System.out.println("Is 24 in the tree? " + bst.find(new Integer(24)));
-		System.out.println("Is 27 in the tree? " + bst.find(new Integer(27)));
+		System.out.println("Is 24 in the tree? " + bst.find(24));
+		System.out.println("Is 27 in the tree? " + bst.find(27));
 
 	}
 
 	private class Node {
 
-		// Constructors
 		Node(Integer theElement) {
 			this(theElement, null, null);
 		}
@@ -131,7 +162,7 @@ public class MyBST {
 
 			BTreePrinter.printWhitespaces(firstSpaces);
 
-			List newNodes = new ArrayList();
+			List<Node> newNodes = new ArrayList<>();
 			for (Object node : nodes) {
 				if (node != null) {
 					System.out.print(((Node) node).element);
@@ -184,7 +215,6 @@ public class MyBST {
 		static int maxLevel(Node node) {
 			if (node == null)
 				return 0;
-
 			return Math.max(BTreePrinter.maxLevel(node.left), BTreePrinter.maxLevel(node.right)) + 1;
 		}
 
@@ -193,7 +223,6 @@ public class MyBST {
 				if (object != null)
 					return false;
 			}
-
 			return true;
 		}
 	}

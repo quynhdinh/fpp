@@ -11,8 +11,8 @@ public class MyStringStack {
 		if (list.size() == 0) {
 			return null;
 		}
-		String s = list.get(list.size() - 1);
-		list.remove(list.size() - 1);
+		String s = list.get(0);
+		list.remove(0);
 		return s;
 	}
 
@@ -20,7 +20,7 @@ public class MyStringStack {
 		if (list.size() == 0) {
 			return null;
 		}
-		return list.get(list.size() - 1);
+		return list.get(0);
 	}
 
 	public void push(String s) {
